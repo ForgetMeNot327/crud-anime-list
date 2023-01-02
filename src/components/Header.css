@@ -1,0 +1,26 @@
+.header {
+  text-transform: uppercase;
+  position: relative;
+  margin: auto;
+  width: fit-content;
+  padding: 0 10px;
+  border: 5px solid;
+  border-image: linear-gradient(#ff512f, #dd2476, #1c64ff) 1;
+  animation: lineAnimate 2.5s ease-in infinite;
+}
+
+@keyframes lineAnimate {
+  50% {
+    border-image: linear-gradient(360deg, #ff512f, #dd2476, #1c64ff) 1;
+  }
+}
+
+/* .header::before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 270px;
+  height: 2px;
+  background-color: #000;
+} */

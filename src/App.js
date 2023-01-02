@@ -1,23 +1,31 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import AnimeList from "./components/AnimeList";
+import Header from "./components/Header";
+import AddingAnime from "./components/adding/AddingAnime";
+import AnimeListData from "./components/AnimeListData";
+import Sorting from "./components/sorting/Sorting";
+import "./App.css";
 
 function App() {
+  const [animes, setAnimes] = useState(AnimeListData);
+  const [value, setValue] = useState("");
+
+  const addAnimeHandler = (anime) => {
+    setAnimes((prevAnimes) => {
+      return [anime, ...prevAnimes];
+    });
+  };
+
+  const getValueFromChild = (acceptValue) => {
+    setValue(acceptValue);
+  };
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Header className="header" />
+      <AddingAnime onAddAnime={addAnimeHandler} />
+      <Sorting animes={animes} onGetValue={getValueFromChild} />
+      <AnimeList animes={animes} valueFromSorting={value} />
     </div>
   );
 }
